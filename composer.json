@@ -5,6 +5,7 @@
         }
     },
     "require": {
-        "php-di/php-di": "*"
+        "php-di/php-di": "^7.0",
+        "nikic/fast-route": "^1.3"
     }
 }

@@ -2,8 +2,6 @@
 
 namespace App\DataBase;
 
-use Exception;
-use mysqli;
 use PDO;
 use PDOException;
 
