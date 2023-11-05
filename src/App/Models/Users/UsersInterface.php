@@ -10,5 +10,4 @@ interface UsersInterface
     public function createApiKey($user_id);
     public function removeApiKey($api_key, $user_id);
     public function checkIfApiKeyIsValide($api_key, $user_id);
-    public function userApiKeyExists($user_id);
 }

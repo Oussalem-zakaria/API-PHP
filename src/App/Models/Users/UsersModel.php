@@ -25,7 +25,7 @@ class UsersModel implements UsersInterface
         $stm->execute();
         $user = $stm->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && $login && $this->userApiKeyExists($user['id']) === false) {
+        if ($user && $login) {
             $user['apiKey'] = $this->createApiKey($user['id']);
         }
 
@@ -77,16 +77,6 @@ class UsersModel implements UsersInterface
     {
         $stm = $this->connection->prepare("SELECT * FROM api_keys WHERE api_key=:api_key AND user_id=:user_id");
         $stm->bindParam(":api_key", $api_key);
-        $stm->bindParam(":user_id", $user_id);
-        $stm->execute();
-        $data = $stm->fetch(PDO::FETCH_ASSOC);
-
-        return $data;
-    }
-
-    public function userApiKeyExists($user_id)
-    {
-        $stm = $this->connection->prepare("SELECT * FROM api_keys WHERE user_id=:user_id");
         $stm->bindParam(":user_id", $user_id);
         $stm->execute();
         $data = $stm->fetch(PDO::FETCH_ASSOC);
